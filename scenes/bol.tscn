@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bxsfysa5hrpjd"]
+
+[ext_resource type="Texture2D" uid="uid://dl8bkigw6pxxb" path="res://assets/bol.png" id="1_a8ua6"]
+[ext_resource type="Script" uid="uid://bnjhqevsui4vb" path="res://scripts/bol.gd" id="1_u15p6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u15p6"]
+radius = 8.0
+
+[node name="Bol" type="CharacterBody2D" unique_id=1866292775]
+script = ExtResource("1_u15p6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1972710927]
+scale = Vector2(3, 3)
+texture = ExtResource("1_a8ua6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1591750180]
+shape = SubResource("CircleShape2D_u15p6")
