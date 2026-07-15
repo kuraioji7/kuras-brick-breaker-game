@@ -2,15 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://bqn1ao0lu7qie" path="res://scenes/paddle.tscn" id="1_2q6dc"]
 [ext_resource type="Script" uid="uid://ckhv8vyvljw2n" path="res://scripts/level.gd" id="1_w8frs"]
-[ext_resource type="PackedScene" uid="uid://bxsfysa5hrpjd" path="res://scenes/bol.tscn" id="2_w7c3h"]
 [ext_resource type="Texture2D" uid="uid://dultkt6h6xpws" path="res://assets/batatinha.jpg" id="4_mx8sn"]
 [ext_resource type="Shader" uid="uid://yybg7d08upak" path="res://assets/shaders/background.gdshader" id="5_klq6b"]
 [ext_resource type="Texture2D" uid="uid://cta6yjdl0h7wc" path="res://assets/backgrounds/2.png" id="6_b121j"]
 [ext_resource type="Texture2D" uid="uid://darur8rxx0b4j" path="res://assets/backgrounds/1.png" id="7_8c41q"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w7c3h"]
-
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_w8frs"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_olg7q"]
 shader = ExtResource("5_klq6b")
@@ -26,24 +21,6 @@ position = Vector2(576, 324)
 
 [node name="Paddle" parent="." unique_id=1478105491 instance=ExtResource("1_2q6dc")]
 position = Vector2(576, 547)
-
-[node name="Bol" parent="." unique_id=1866292775 instance=ExtResource("2_w7c3h")]
-position = Vector2(575, 493)
-
-[node name="Walls" type="StaticBody2D" parent="." unique_id=1717683745]
-
-[node name="LeftWall" type="CollisionShape2D" parent="Walls" unique_id=638567380]
-rotation = 1.5707964
-shape = SubResource("WorldBoundaryShape2D_w7c3h")
-
-[node name="RightWall" type="CollisionShape2D" parent="Walls" unique_id=1402708305]
-position = Vector2(1152, 0)
-rotation = 4.712389
-shape = SubResource("WorldBoundaryShape2D_w8frs")
-
-[node name="Cieling" type="CollisionShape2D" parent="Walls" unique_id=273163674]
-rotation = 3.1415927
-shape = SubResource("WorldBoundaryShape2D_w8frs")
 
 [node name="Batatinha" type="Sprite2D" parent="." unique_id=1468456692]
 modulate = Color(1, 1, 1, 0.7882353)
@@ -73,4 +50,4 @@ texture = ExtResource("7_8c41q")
 position = Vector2(0, 648)
 shape = SubResource("WorldBoundaryShape2D_klq6b")
 
-[connection signal="body_entered" from="Deathzone" to="Bol" method="_on_deathzone_body_entered"]
+[connection signal="body_entered" from="Deathzone" to="." method="_on_deathzone_body_entered"]

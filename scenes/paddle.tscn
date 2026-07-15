@@ -20,3 +20,10 @@ position = Vector2(1.9073484e-07, 0)
 rotation = 1.5707964
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("CapsuleShape2D_y7wee")
+
+[node name="BallSpawn" type="Marker2D" parent="." unique_id=1314356990]
+position = Vector2(0, -3.1999998)
+
+[node name="ShootCooldown" type="Timer" parent="." unique_id=219559142]
+
+[connection signal="timeout" from="ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]

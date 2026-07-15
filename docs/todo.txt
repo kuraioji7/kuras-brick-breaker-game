@@ -1,0 +1,1 @@
+Define if the level zones (side wall and paddle movement zone) should be defined in script or scene

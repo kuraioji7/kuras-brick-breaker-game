@@ -2,30 +2,22 @@ extends CharacterBody2D
 
 var speed = 200.0
 var dir = Vector2.DOWN
-var is_active = true
+signal destroyed
 
-func _ready() -> void:
-	velocity = Vector2(speed * -1, speed)
+#func _ready():
+	#add_to_group("balls")
 	
 func _physics_process(delta: float) -> void:
-	if is_active:
+	var collision = move_and_collide(velocity * delta)
+	
+	if collision:
+		# Need to change this logic later on to have varing speed after collision
+		velocity = velocity.bounce(collision.get_normal()).normalized() * speed
 		
-		var collision = move_and_collide(velocity * delta)
+		# If it is going too straight up
+		if abs(velocity.x) < 10:
+			velocity.x += randf_range(-20, 20)
+			velocity = velocity.normalized() * speed
 		
-		if collision:
-			velocity = velocity.bounce(collision.get_normal())
-			
-			if collision.get_collider().has_method("hit"):
-				collision.get_collider().hit()
-			
-		if(velocity.y > 0 and velocity.y < 100):
-			velocity.y = -200
-		if velocity.x == 0:
-			velocity.x = -200
-			
-
-func game_over():
-	get_tree().reload_current_scene()
-
-func _on_deathzone_body_entered(body: Node2D) -> void:
-	game_over()
+		if collision.get_collider().has_method("hit"):
+			collision.get_collider().hit()

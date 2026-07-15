@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_u15p6"]
 radius = 8.0
 
-[node name="Bol" type="CharacterBody2D" unique_id=1866292775]
+[node name="Bol" type="CharacterBody2D" unique_id=1866292775 groups=["balls"]]
 script = ExtResource("1_u15p6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1972710927]
